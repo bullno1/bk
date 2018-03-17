@@ -1,9 +1,8 @@
 #ifndef BK_DEFAULT_ALLOCATOR_H
 #define BK_DEFAULT_ALLOCATOR_H
 
-#include "macro.h"
-#include "allocator.h"
+#include "decl.h"
 
-BK_API bk_allocator_t* bk_default_allocator;
+BK_DECL struct bk_allocator_s* bk_default_allocator;
 
 #endif

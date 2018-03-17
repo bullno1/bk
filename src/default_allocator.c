@@ -1,5 +1,6 @@
 #include <bk/default_allocator.h>
 #include <stdlib.h>
+#include <bk/allocator.h>
 #include <bk/assert.h>
 
 static void*

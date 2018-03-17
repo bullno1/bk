@@ -1,10 +1,6 @@
 #ifndef BK_MACRO_H
 #define BK_MACRO_H
 
-#ifndef BK_API
-#define BK_API
-#endif
-
 #ifdef __cplusplus
 #	define BK_ALIGN_OF(TYPE) alignof(TYPE)
 #else
@@ -57,5 +53,24 @@
 
 /// Make it clear that it's an array and not a pointer to a single element
 #define BK_ARRAY(T) T*
+
+#ifdef __cplusplus
+#	define BK_EXTERN extern "C"
+#else
+#	define BK_EXTERN extern
+#endif
+
+#ifdef _WIN32
+#	ifdef __GNUC__
+#		define BK_DYNAMIC_EXPORT __attribute__((dllexport))
+#		define BK_DYNAMIC_IMPORT __attribute__((dllimport))
+#	else
+#		define BK_DYNAMIC_EXPORT __declspec(dllexport)
+#		define BK_DYNAMIC_IMPORT __declspec(dllimport)
+#	endif
+#else
+#	define BK_DYNAMIC_EXPORT __attribute__((visibility("default")))
+#	define BK_DYNAMIC_IMPORT
+#endif
 
 #endif

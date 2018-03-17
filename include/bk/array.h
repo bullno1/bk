@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
-#include "macro.h"
+#include "decl.h"
 
 struct bk_allocator_s;
 
@@ -55,19 +55,19 @@ struct bk_allocator_s;
 	 &(ARRAY)[bk_array_len((ARRAY)) - 1])
 
 /// Destroy an array.
-BK_API void
+BK_DECL void
 bk_array_destroy(void* array);
 
 /// Remove all items from an array.
-BK_API void
+BK_DECL void
 bk_array_clear(void* array);
 
 /// Get the length of an array.
-BK_API size_t
+BK_DECL size_t
 bk_array_len(const void* array);
 
 // private
-BK_API void*
+BK_DECL void*
 bk_array__create(
 	struct bk_allocator_s* allocator,
 	size_t elem_size,
@@ -75,10 +75,10 @@ bk_array__create(
 	size_t capacity
 );
 
-BK_API void*
+BK_DECL void*
 bk_array__prepare_push(void* array);
 
-BK_API void*
+BK_DECL void*
 bk_array__resize(void* array, size_t new_length);
 
 #endif
