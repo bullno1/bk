@@ -1,8 +1,8 @@
+#include "munit/munit.h"
 #include <bk/array.h>
 #include <bk/default_allocator.h>
 #include <emmintrin.h>
 #include <stdbool.h>
-#include "munit/munit.h"
 
 static MunitResult
 retention(const MunitParameter params[], void* fixture)
@@ -126,22 +126,10 @@ quick_remove(const MunitParameter params[], void* fixture)
 }
 
 static MunitTest tests[] = {
-	{
-		.name = "/retention",
-		.test = retention
-	},
-	{
-		.name = "/alignment/sse",
-		.test = alignment_sse
-	},
-	{
-		.name = "/alignment/long_double",
-		.test = alignment_long_double
-	},
-	{
-		.name = "/quick_remove",
-		.test = quick_remove,
-	},
+	{ .name = "/retention", .test = retention },
+	{ .name = "/alignment/sse", .test = alignment_sse },
+	{ .name = "/alignment/long_double", .test = alignment_long_double },
+	{ .name = "/quick_remove", .test = quick_remove },
 	{ 0 }
 };
 
