@@ -4,7 +4,7 @@
 #include <sys/types.h>
 #endif
 
-#include <bk/crt_fs.h>
+#include <bk/fs/crt.h>
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>

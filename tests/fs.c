@@ -3,9 +3,9 @@
 #include <bk/fs.h>
 #include <bk/allocator.h>
 #include <bk/default_allocator.h>
-#include <bk/crt_fs.h>
-#include <bk/ro_fs.h>
-#include <bk/fs_utils.h>
+#include <bk/fs/crt.h>
+#include <bk/fs/ro.h>
+#include <bk/fs/utils.h>
 
 static MunitResult
 crt_fs_test(const MunitParameter params[], void* fixture)

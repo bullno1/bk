@@ -1,6 +1,6 @@
-#include <bk/ro_fs.h>
+#include <bk/fs/ro.h>
 #include <bk/fs.h>
-#include <bk/fs_utils.h>
+#include <bk/fs/utils.h>
 #include <bk/allocator.h>
 #include <errno.h>
 

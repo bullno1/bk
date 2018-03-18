@@ -22,7 +22,7 @@ clean:
 test: bin/tests
 	bin/tests
 
-bin/bk.so: src/*.c
+bin/bk.so: $(shell find src -name '*.c')
 	mkdir -p bin
 	$(CC) $(CFLAGS) $^ -fPIC -shared -fvisibility=hidden -DBK_BUILD=1 -o $@
 

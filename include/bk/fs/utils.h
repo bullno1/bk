@@ -2,8 +2,8 @@
 #define BK_FS_UTILS_H
 
 #include <stddef.h>
-#include "decl.h"
-#include "macro.h"
+#include "../decl.h"
+#include "../macro.h"
 
 struct bk_fs_s;
 struct bk_allocator_s;

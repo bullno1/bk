@@ -1,7 +1,7 @@
 #ifndef BK_CRT_FS_H
 #define BK_CRT_FS_H
 
-#include "decl.h"
+#include "../decl.h"
 
 struct bk_fs_s;
 struct bk_allocator_s;
