@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "macro.h"
 
 #ifdef NDEBUG
 #define BK_ASSERT(COND, MSG)
