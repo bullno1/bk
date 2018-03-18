@@ -39,3 +39,5 @@ There are several implementations:
 - [vfs](include/bk/fs/vfs.h): a "filesystem manager".
   Other filesystems can be mounted at different paths of this filesystem.
   In other words, it's a very primitive version of [PhysicsFS](https://icculus.org/physfs) without any archive codec.
+- [prefix](include/bk/fs/prefix.h): adds a prefix to all paths.
+  It can be used together with [vfs](include/bk/fs/vfs.h) to create a "bind mount".
