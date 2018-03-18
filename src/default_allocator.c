@@ -1,7 +1,6 @@
 #include <bk/default_allocator.h>
 #include <stdlib.h>
 #include <bk/allocator.h>
-#include <bk/assert.h>
 
 static void*
 bk_default_realloc(bk_allocator_t* allocator, void* ptr, size_t size)
@@ -16,7 +15,6 @@ bk_default_realloc(bk_allocator_t* allocator, void* ptr, size_t size)
 	else
 	{
 		void* result = realloc(ptr, size);
-		BK_CRITICAL_ASSERT(result, "Out of memory");
 		return result;
 	}
 }
