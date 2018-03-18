@@ -106,14 +106,6 @@ bk_crt_fs_tell(bk_fs_t* fs, bk_file_t* file, size_t* pos)
 	return offset == -1 ? errno : 0;
 }
 
-
-static const char*
-bk_crt_fs_strerror(bk_fs_t* fs, int code)
-{
-	(void)fs;
-	return strerror(code);
-}
-
 bk_fs_t*
 bk_crt_fs_create(bk_allocator_t* allocator)
 {

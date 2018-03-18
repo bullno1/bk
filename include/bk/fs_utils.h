@@ -3,6 +3,7 @@
 
 #include <stddef.h>
 #include "decl.h"
+#include "macro.h"
 
 struct bk_fs_s;
 struct bk_allocator_s;
@@ -15,5 +16,19 @@ bk_read_file(
 
 BK_DECL int
 bk_write_file(struct bk_fs_s* fs, const char* path, const void* buf, size_t size);
+
+BK_INLINE int
+bk_is_mode_ro(const char* mode)
+{
+	for(const char* ch = mode; *ch != '\0'; ++ch)
+	{
+		if(*ch == '+' || *ch == 'w' || *ch == 'a')
+		{
+			return 0;
+		}
+	}
+
+	return 1;
+}
 
 #endif

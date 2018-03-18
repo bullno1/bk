@@ -20,7 +20,6 @@ struct bk_fs_s
 	int(*write)(bk_fs_t* fs, bk_file_t* file, const void* buf, size_t* len);
 	int(*tell)(bk_fs_t* fs, bk_file_t* file, size_t* pos);
 	int(*seek)(bk_fs_t* fs, bk_file_t* file, size_t pos, int origin);
-	const char*(*strerror)(bk_fs_t* fs, int code);
 };
 
 BK_INLINE int
@@ -57,12 +56,6 @@ BK_INLINE int
 bk_fseek(bk_file_t* file, size_t pos, int origin)
 {
 	return file->fs->seek(file->fs, file, pos, origin);
-}
-
-BK_INLINE const char*
-bk_fstrerror(bk_fs_t* fs, int code)
-{
-	return fs->strerror(fs, code);
 }
 
 #endif
