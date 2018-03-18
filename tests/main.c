@@ -4,7 +4,7 @@
 
 #define TEST_SUITES(X) \
 	X(array) \
-	X(fs())
+	X(fs)
 
 #define DECLARE_SUITE(S) extern MunitSuite S;
 
