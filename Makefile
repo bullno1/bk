@@ -1,6 +1,6 @@
 .PHONY: test all clean
 
-CFLAGS += -I include
+CFLAGS += -I include -fsanitize=undefined -fsanitize=address
 
 all: test
 
