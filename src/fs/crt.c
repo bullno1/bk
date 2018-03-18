@@ -28,7 +28,8 @@ bk_crt_fs_open(bk_fs_t* fs, const char* path, const char* mode, bk_file_t** file
 {
 	bk_crt_fs_t* self = BK_CONTAINER_OF(fs, bk_crt_fs_t, bk_fs);
 
-	bk_crt_file_t* bk_file = BK_NEW(self->allocator, bk_crt_file_t);
+	bk_crt_file_t* bk_file = BK_UNSAFE_NEW(self->allocator, bk_crt_file_t);
+	if(bk_file == NULL) { return ENOMEM; }
 
 	bk_file->bk_file.fs = fs;
 
