@@ -60,9 +60,9 @@ bk_fseek(bk_file_t* file, size_t pos, int origin)
 }
 
 BK_INLINE const char*
-bk_fstrerror(bk_file_t* file, int code)
+bk_fstrerror(bk_fs_t* fs, int code)
 {
-	return file->fs->strerror(file->fs, code);
+	return fs->strerror(fs, code);
 }
 
 #endif

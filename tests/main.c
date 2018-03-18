@@ -3,7 +3,8 @@
 #include "munit/munit.h"
 
 #define TEST_SUITES(X) \
-	X(array)
+	X(array) \
+	X(fs())
 
 #define DECLARE_SUITE(S) extern MunitSuite S;
 
