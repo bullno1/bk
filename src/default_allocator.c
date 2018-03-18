@@ -19,5 +19,5 @@ bk_default_realloc(bk_allocator_t* allocator, void* ptr, size_t size)
 	}
 }
 
-bk_allocator_t bk_default_allocator_instance = { .realloc = bk_default_realloc };
+static bk_allocator_t bk_default_allocator_instance = { .realloc = bk_default_realloc };
 bk_allocator_t* bk_default_allocator = &bk_default_allocator_instance;
