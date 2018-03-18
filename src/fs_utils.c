@@ -2,7 +2,6 @@
 #include <bk/fs.h>
 #include <bk/allocator.h>
 #include <stdio.h>
-#include <errno.h>
 
 int
 bk_read_file(
@@ -22,7 +21,6 @@ bk_read_file(
 	if((err = bk_fseek(file, 0, SEEK_SET)) != 0) { goto end; }
 
 	void* buf = bk_malloc(allocator, file_size);
-	if(buf == NULL) { err = ENOMEM; goto end; }
 
 	if((err = bk_fread(file, buf, &file_size)) != 0)
 	{
