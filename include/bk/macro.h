@@ -38,7 +38,7 @@
 #define BK_GEN_ENUM(ENUM) ENUM,
 
 #define BK_DEFINE_ENUM_TO_STR(NAME, X) \
-	BK_MAYBE_UNUSED static inline const char* NAME##_to_str(NAME value) { \
+	BK_INLINE const char* NAME##_to_str(NAME value) { \
 		switch(value) { \
 			X(BK_DEFINE_ENUM_CASE) \
 			default: return 0; \
