@@ -3,7 +3,12 @@
 
 #include <stdarg.h>
 #include "decl.h"
-#include "macro.h"
+
+#if defined(__GNUC__) || defined(__clang__)
+#	define BK_PRINTF_LIKE(x, y) __attribute__((format(printf, x, y)))
+#else
+#	define BK_PRINTF_LIKE(x, y)
+#endif
 
 struct bk_file_s;
 

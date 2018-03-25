@@ -18,10 +18,8 @@
 
 #if defined(__GNUC__) || defined(__clang__)
 #	define BK_MAYBE_UNUSED __attribute__((unused))
-#	define BK_PRINTF_LIKE(x, y) __attribute__((format(printf, x, y)))
 #else
 #	define BK_MAYBE_UNUSED
-#	define BK_PRINTF_LIKE(x, y)
 #endif
 
 #define BK_INLINE BK_MAYBE_UNUSED static inline

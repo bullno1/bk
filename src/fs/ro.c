@@ -63,7 +63,7 @@ bk_ro_fs_tell(bk_fs_t* fs, bk_file_t* file, size_t* pos)
 	return self->backing_fs->tell(self->backing_fs, file, pos);
 }
 
-BK_DECL struct bk_fs_s*
+struct bk_fs_s*
 bk_ro_fs_create(struct bk_allocator_s* allocator, struct bk_fs_s* backing_fs)
 {
 	bk_ro_fs_t* fs = BK_NEW(allocator, bk_ro_fs_t);
@@ -83,7 +83,7 @@ bk_ro_fs_create(struct bk_allocator_s* allocator, struct bk_fs_s* backing_fs)
 	return &fs->bk_fs;
 }
 
-BK_DECL void
+void
 bk_ro_fs_destroy(struct bk_fs_s* fs)
 {
 	bk_ro_fs_t* self = BK_CONTAINER_OF(fs, bk_ro_fs_t, bk_fs);
