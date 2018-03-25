@@ -41,9 +41,7 @@ bk_vfs_create(struct bk_allocator_s* allocator)
 {
 	bk_vfs_t* fs = BK_NEW(allocator, bk_vfs_t);
 	*fs = (bk_vfs_t){
-		.bk_fs = {
-			.open = &bk_vfs_open,
-		},
+		.bk_fs = { .open = &bk_vfs_open },
 		.allocator = allocator
 	};
 
