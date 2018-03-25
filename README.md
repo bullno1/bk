@@ -41,3 +41,7 @@ There are several implementations:
   In other words, it's a very primitive version of [PhysicsFS](https://icculus.org/physfs) without any archive codec.
 - [prefix](include/bk/fs/prefix.h): adds a prefix to all paths.
   It can be used together with [vfs](include/bk/fs/vfs.h) to create a "bind mount".
+
+### [printf.h](inclue/bk/printf.h)
+
+printf-like functions which are compatible with [fs](include/bk/fs.h) streams.
