@@ -2,11 +2,13 @@
 #include <string.h>
 #include <bk/fs.h>
 #include <bk/allocator.h>
+#include <bk/array.h>
 #include <bk/default_allocator.h>
 #include <bk/fs/crt.h>
 #include <bk/fs/ro.h>
 #include <bk/fs/vfs.h>
 #include <bk/fs/prefix.h>
+#include <bk/fs/mem.h>
 #include <bk/fs/utils.h>
 #include <errno.h>
 
@@ -129,11 +131,40 @@ vfs(const MunitParameter params[], void* fixture)
 	return MUNIT_OK;
 }
 
+static MunitResult
+mem(const MunitParameter params[], void* fixture)
+{
+	(void)params;
+	(void)fixture;
+
+	BK_ARRAY(char) buf = bk_array_create(bk_default_allocator, char, 1);
+
+	const char* test = __func__;
+	bk_mem_file_t mem_file;
+	bk_file_t* file = bk_mem_fs_wrap(&mem_file, &buf);
+
+	size_t size = strlen(test);
+	munit_assert_int(0, ==, bk_fwrite(file, test, &size));
+	munit_assert_size(strlen(test), ==, size);
+
+	char read_buf[strlen(test)];
+	munit_assert_int(0, ==, bk_fseek(file, 0, SEEK_SET));
+	munit_assert_int(0, ==, bk_fread(file, read_buf, &size));
+	munit_assert_size(strlen(test), ==, size);
+
+	munit_assert_memory_equal(strlen(test), test, read_buf);
+
+	bk_array_destroy(buf);
+
+	return MUNIT_OK;
+}
+
 static MunitTest tests[] = {
 	{ .name = "/crt", .test = crt },
 	{ .name = "/ro", .test = ro },
 	{ .name = "/vfs", .test = vfs },
 	{ .name = "/prefix", .test = prefix },
+	{ .name = "/mem", .test = mem },
 	{ 0 }
 };
 
