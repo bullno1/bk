@@ -76,7 +76,7 @@ bk_crt_fs_write(bk_fs_t* fs, bk_file_t* file, const void* buf, size_t* len)
 }
 
 static int
-bk_crt_fs_seek(bk_fs_t* fs, bk_file_t* file, size_t offset, int origin)
+bk_crt_fs_seek(bk_fs_t* fs, bk_file_t* file, bk_off_t offset, int origin)
 {
 	(void)fs;
 	bk_crt_file_t* bk_file = BK_CONTAINER_OF(file, bk_crt_file_t, bk_file);
