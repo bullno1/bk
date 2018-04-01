@@ -158,6 +158,7 @@ mem(const MunitParameter params[], void* fixture)
 
 	char read_buf2[sizeof(test)];
 	munit_assert_int(0, ==, bk_fread(file, read_buf2, &size));
+	munit_assert_size(sizeof(test), ==, size);
 	munit_assert_memory_equal(sizeof(test), read_buf, read_buf2);
 
 	bk_array_destroy(buf);
