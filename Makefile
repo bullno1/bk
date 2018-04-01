@@ -1,6 +1,6 @@
 .PHONY: test all clean
 
-CFLAGS += \
+CFLAGS ?= \
 		  -I include \
 		  -g \
 		  -O3 \
