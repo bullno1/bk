@@ -6,9 +6,13 @@
 #include <errno.h>
 #include "macro.h"
 
+#ifndef BK_OFFSET_TYPE
+#define BK_OFFSET_TYPE int64_t
+#endif
+
 typedef struct bk_fs_s bk_fs_t;
 typedef struct bk_file_s bk_file_t;
-typedef int64_t bk_off_t;
+typedef BK_OFFSET_TYPE bk_off_t;
 
 struct bk_file_s
 {

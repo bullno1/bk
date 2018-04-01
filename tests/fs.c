@@ -139,20 +139,26 @@ mem(const MunitParameter params[], void* fixture)
 
 	BK_ARRAY(char) buf = bk_array_create(bk_default_allocator, char, 1);
 
-	const char* test = __func__;
+	const char test[] = "bk_mem_fs_test";
 	bk_mem_file_t mem_file;
-	bk_file_t* file = bk_mem_fs_wrap(&mem_file, &buf);
+	bk_file_t* file = bk_mem_fs_wrap_flexible(&mem_file, &buf);
 
-	size_t size = strlen(test);
+	size_t size = sizeof(test);
 	munit_assert_int(0, ==, bk_fwrite(file, test, &size));
-	munit_assert_size(strlen(test), ==, size);
+	munit_assert_size(sizeof(test), ==, size);
 
-	char read_buf[strlen(test)];
+	char read_buf[sizeof(test)];
 	munit_assert_int(0, ==, bk_fseek(file, 0, SEEK_SET));
 	munit_assert_int(0, ==, bk_fread(file, read_buf, &size));
-	munit_assert_size(strlen(test), ==, size);
+	munit_assert_size(sizeof(test), ==, size);
 
-	munit_assert_memory_equal(strlen(test), test, read_buf);
+	munit_assert_memory_equal(sizeof(test), test, read_buf);
+
+	file = bk_mem_fs_wrap_fixed(&mem_file, read_buf, sizeof(test));
+
+	char read_buf2[sizeof(test)];
+	munit_assert_int(0, ==, bk_fread(file, read_buf2, &size));
+	munit_assert_memory_equal(sizeof(test), read_buf, read_buf2);
 
 	bk_array_destroy(buf);
 

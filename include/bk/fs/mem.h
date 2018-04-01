@@ -9,11 +9,19 @@ typedef struct bk_mem_file_s bk_mem_file_t;
 struct bk_mem_file_s
 {
 	bk_file_t bk_file;
-	BK_ARRAY(char)* bufferp;
 	bk_off_t pos;
+	bk_off_t size;
+	union
+	{
+		char* fixed;
+		char** flexible;
+	} buf;
 };
 
 BK_DECL bk_file_t*
-bk_mem_fs_wrap(bk_mem_file_t* mem_file, BK_ARRAY(char)* buffer);
+bk_mem_fs_wrap_flexible(bk_mem_file_t* mem_file, char** buffer);
+
+BK_DECL bk_file_t*
+bk_mem_fs_wrap_fixed(bk_mem_file_t* mem_file, char* buffer, size_t size);
 
 #endif
