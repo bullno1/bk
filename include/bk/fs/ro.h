@@ -12,4 +12,8 @@ bk_ro_fs_create(struct bk_allocator_s* allocator, struct bk_fs_s* backing_fs);
 BK_DECL void
 bk_ro_fs_destroy(struct bk_fs_s* fs);
 
+#ifdef BK_IMPLEMENTATION
+#include "../../../src/fs/ro.c"
+#endif
+
 #endif

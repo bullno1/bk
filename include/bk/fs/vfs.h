@@ -28,4 +28,8 @@ bk_vfs_mount(struct bk_fs_s* vfs, bk_vfs_mount_t* mount);
 BK_DECL void
 bk_vfs_umount(struct bk_fs_s* vfs, bk_vfs_mount_t* mount);
 
+#ifdef BK_IMPLEMENTATION
+#include "../../../src/fs/vfs.c"
+#endif
+
 #endif

@@ -31,4 +31,8 @@ bk_is_mode_ro(const char* mode)
 	return 1;
 }
 
+#ifdef BK_IMPLEMENTATION
+#include "../../../src/fs/utils.c"
+#endif
+
 #endif

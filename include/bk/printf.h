@@ -27,4 +27,9 @@ bk_printf(struct bk_file_s* out, const char* fmt, ...)
 	return result;
 }
 
+#ifdef BK_IMPLEMENTATION
+#include "../../src/printf.c"
+#include "../../src/vendor/format/format.c"
+#endif
+
 #endif

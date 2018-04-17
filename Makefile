@@ -11,8 +11,7 @@ CFLAGS ?= \
 		  -Wall \
 		  -Werror \
 		  -Wextra \
-		  -Wno-missing-field-initializers \
-		  -DBK_DYNAMIC=1 # To check declaration
+		  -Wno-missing-field-initializers
 
 all: test
 
@@ -22,10 +21,6 @@ clean:
 test: bin/tests
 	bin/tests
 
-bin/bk.so: $(shell find src -name '*.c')
-	mkdir -p bin
-	$(CC) $(CFLAGS) $^ -fPIC -shared -fvisibility=hidden -DBK_BUILD=1 -o $@
-
-bin/tests: tests/*.c tests/munit/munit.c bin/bk.so
+bin/tests: tests/*.c tests/munit/munit.c
 	mkdir -p bin
 	$(CC) $(CFLAGS) $^ -o $@

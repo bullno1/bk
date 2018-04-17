@@ -81,4 +81,8 @@ bk_array__prepare_push(void* array);
 BK_DECL void*
 bk_array__resize(void* array, size_t new_length);
 
+#ifdef BK_IMPLEMENTATION
+#include "../../src/array.c"
+#endif
+
 #endif
