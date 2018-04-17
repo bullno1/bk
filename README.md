@@ -46,3 +46,16 @@ There are several implementations:
 ### [printf.h](inclue/bk/printf.h)
 
 printf-like functions which are compatible with [fs](include/bk/fs.h) streams.
+
+## Building
+
+No special code generation or configure steps are required.
+Just add all the files in src to any build tool.
+
+Individual modules can also be used separately in "single-header style" without building the whole library.
+For example, to use [array.h](include/bk/array.h) in your project, put this in *one* source file:
+
+```c
+#define  BK_IMPLEMENTATION
+#include <bk/array.h>
+```
