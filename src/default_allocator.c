@@ -7,7 +7,7 @@ bk_default_realloc(bk_allocator_t* allocator, void* ptr, size_t size)
 {
 	(void)allocator;
 
-	if(BK_REALLOC_FREE(ptr, size))
+	if(size == 0)
 	{
 		free(ptr);
 		return NULL;

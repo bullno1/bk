@@ -7,7 +7,6 @@
 
 #define BK_NEW(ALLOCATOR, TYPE) (TYPE*)(bk_malloc(ALLOCATOR, sizeof(TYPE)))
 #define BK_UNSAFE_NEW(ALLOCATOR, TYPE) (TYPE*)(bk_unsafe_malloc(ALLOCATOR, sizeof(TYPE)))
-#define BK_REALLOC_FREE(PTR, SIZE) (ptr != 0 && size == 0)
 
 typedef struct bk_allocator_s bk_allocator_t;
 
