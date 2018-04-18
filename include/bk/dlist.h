@@ -4,6 +4,9 @@
 #include "macro.h"
 #include "assert.h"
 
+#define bk_dlist_foreach(itr, dlist) \
+	for(bk_dlist_link_t* itr = (dlist)->next; itr != (dlist); itr = itr->next)
+
 typedef struct bk_dlist_link_s bk_dlist_link_t;
 
 struct bk_dlist_link_s
@@ -62,6 +65,12 @@ bk_dlist_unlink(bk_dlist_link_t* item)
 	prev->next = next;
 
 	bk_dlist_init(item);
+}
+
+BK_INLINE int
+bk_dlist_is_empty(bk_dlist_link_t* list)
+{
+	return list->next == list;
 }
 
 #endif
