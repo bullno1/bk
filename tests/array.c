@@ -78,6 +78,32 @@ alignment_long_double(const MunitParameter params[], void* fixture)
 }
 
 static MunitResult
+remove(const MunitParameter params[], void* fixture)
+{
+	(void)params;
+	(void)fixture;
+
+	BK_ARRAY(uint32_t) array = bk_array_create(bk_default_allocator, uint32_t, 0);
+
+	bk_array_push(array, 0);
+	bk_array_push(array, 1);
+	bk_array_push(array, 2);
+	bk_array_push(array, 3);
+	munit_assert_size(4, ==, bk_array_len(array));
+
+	bk_array_remove(array, 2);
+
+	munit_assert_size(3, ==, bk_array_len(array));
+	munit_assert_uint32(0, ==, array[0]);
+	munit_assert_uint32(1, ==, array[1]);
+	munit_assert_uint32(3, ==, array[2]);
+
+	bk_array_destroy(array);
+
+	return MUNIT_OK;
+}
+
+static MunitResult
 quick_remove(const MunitParameter params[], void* fixture)
 {
 	(void)params;
@@ -129,6 +155,7 @@ static MunitTest tests[] = {
 	{ .name = "/retention", .test = retention },
 	{ .name = "/alignment/sse", .test = alignment_sse },
 	{ .name = "/alignment/long_double", .test = alignment_long_double },
+	{ .name = "/remove", .test = remove },
 	{ .name = "/quick_remove", .test = quick_remove },
 	{ 0 }
 };

@@ -66,6 +66,10 @@ bk_array_clear(void* array);
 BK_DECL size_t
 bk_array_len(const void* array);
 
+/// Delete an element from the array while keeping other elements in order
+BK_DECL void
+bk_array_remove(void* array, size_t index);
+
 // private
 BK_DECL void*
 bk_array__create(

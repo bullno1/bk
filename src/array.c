@@ -116,3 +116,14 @@ bk_array_clear(void* array)
 {
 	bk_array_head(array)->length = 0;
 }
+
+void
+bk_array_remove(void* array, size_t index)
+{
+	bk_array_t* head = bk_array_head(array);
+	void* dst = (char*)array + head->elem_size * index;
+	void* src = (char*)array + head->elem_size * (index + 1);
+	size_t size = (head->length - index - 1) * head->elem_size;
+	memmove(dst, src, size);
+	--head->length;
+}
