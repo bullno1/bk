@@ -54,6 +54,11 @@ struct bk_allocator_s;
 	((ARRAY)[(INDEX)] = (ARRAY)[bk_array_len((ARRAY)) - 1], \
 	 bk_array_resize((ARRAY), bk_array_len((ARRAY)) - 1))
 
+/// Insert an item at some index, moving other items toward the end
+#define bk_array_insert(ARRAY, INDEX, ITEM) \
+	(bk_array__prepare_insert((ARRAY), (INDEX)), \
+	 ((ARRAY)[(INDEX)] = ITEM))
+
 /// Reserve space at the end of the array and return pointer to that slot.
 #define bk_array_alloc(ARRAY) \
 	((ARRAY) = bk_array__prepare_push((ARRAY)), \
@@ -86,6 +91,9 @@ bk_array__create(
 
 BK_DECL void*
 bk_array__prepare_push(void* array);
+
+BK_DECL void*
+bk_array__prepare_insert(void* array, size_t index);
 
 BK_DECL void*
 bk_array__resize(void* array, size_t new_length);

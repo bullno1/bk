@@ -172,6 +172,29 @@ pop(const MunitParameter params[], void* fixture)
 	return MUNIT_OK;
 }
 
+static MunitResult
+insert(const MunitParameter params[], void* fixture)
+{
+	(void)params;
+	(void)fixture;
+
+	BK_ARRAY(int) array = bk_array_create(bk_default_allocator, int, 2);
+
+	bk_array_push(array, 1);
+	bk_array_push(array, 3);
+	bk_array_push(array, 4);
+
+	bk_array_insert(array, 1, 2);
+	munit_assert_int(1, ==, array[0]);
+	munit_assert_int(2, ==, array[1]);
+	munit_assert_int(3, ==, array[2]);
+	munit_assert_int(4, ==, array[3]);
+
+	bk_array_destroy(array);
+
+	return MUNIT_OK;
+}
+
 static MunitTest tests[] = {
 	{ .name = "/retention", .test = retention },
 	{ .name = "/alignment/sse", .test = alignment_sse },
@@ -179,6 +202,7 @@ static MunitTest tests[] = {
 	{ .name = "/remove", .test = remove },
 	{ .name = "/quick_remove", .test = quick_remove },
 	{ .name = "/pop", .test = pop },
+	{ .name = "/insert", .test = insert },
 	{ 0 }
 };
 
