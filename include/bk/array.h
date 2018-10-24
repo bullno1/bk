@@ -25,6 +25,11 @@ struct bk_allocator_s;
 	((ARRAY) = bk_array__prepare_push((ARRAY)), \
 	 ((ARRAY))[bk_array_len((ARRAY)) - 1] = (ITEM))
 
+/// Pop an element from the end of the array.
+#define bk_array_pop(ARRAY) \
+	(bk_array_resize((ARRAY), bk_array_len((ARRAY)) - 1), \
+	 ((ARRAY))[bk_array_len((ARRAY))])
+
 /// Resize an array.
 #define bk_array_resize(ARRAY, NEW_LENGTH) \
 	((ARRAY) = bk_array__resize((ARRAY), (NEW_LENGTH)))

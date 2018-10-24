@@ -151,12 +151,34 @@ quick_remove(const MunitParameter params[], void* fixture)
 	return MUNIT_OK;
 }
 
+static MunitResult
+pop(const MunitParameter params[], void* fixture)
+{
+	(void)params;
+	(void)fixture;
+
+	BK_ARRAY(int) array = bk_array_create(bk_default_allocator, int, 2);
+	munit_assert_size(0, ==, bk_array_len(array));
+
+	bk_array_push(array, 42);
+	bk_array_push(array, 43);
+	munit_assert_size(2, ==, bk_array_len(array));
+	munit_assert_int(43, ==, bk_array_pop(array));
+	munit_assert_int(42, ==, bk_array_pop(array));
+	munit_assert_size(0, ==, bk_array_len(array));
+
+	bk_array_destroy(array);
+
+	return MUNIT_OK;
+}
+
 static MunitTest tests[] = {
 	{ .name = "/retention", .test = retention },
 	{ .name = "/alignment/sse", .test = alignment_sse },
 	{ .name = "/alignment/long_double", .test = alignment_long_double },
 	{ .name = "/remove", .test = remove },
 	{ .name = "/quick_remove", .test = quick_remove },
+	{ .name = "/pop", .test = pop },
 	{ 0 }
 };
 
