@@ -71,4 +71,8 @@
 #	define BK_DYNAMIC_IMPORT
 #endif
 
+#define BK_PP_CONCAT(A, B) BK_PP_CONCAT2(A, B)
+#define BK_PP_CONCAT2(A, B) BK_PP_CONCAT3(A, B)
+#define BK_PP_CONCAT3(A, B) A##B
+
 #endif
